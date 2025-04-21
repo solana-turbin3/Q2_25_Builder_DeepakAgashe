@@ -1,5 +1,3 @@
-#![allow(unexpected_cfgs)]
-
 use anchor_lang::prelude::*;
 use anchor_spl::token_interface::{Mint, TokenInterface};
 
@@ -18,7 +16,7 @@ pub struct Initialize<'info>{
         bump,
         space = Marketplace::INIT_SPACE
     )]
-    pub marketplace: Account<'info, Mint>,
+    pub marketplace: Account<'info, Marketplace>,
 
     #[account(
         seeds = [b"treasury", name.as_str().as_bytes()],
@@ -43,7 +41,18 @@ pub struct Initialize<'info>{
 }
 
 impl<'info> Initialize<'info> {
-    pub fn initialize(&mut self, name: String, ) -> Result<()> {
+    pub fn initialize(&mut self, name: String,fee: u16, bumps: &InitializeBumps ) -> Result<()> {
+        
+        self.marketplace.set_inner(Marketplace {
+            admin: self.admin.key(),
+            fee,
+            bump: bumps.marketplace,
+            treasury_bump: bumps.treasury,
+            reward_bump: bumps.reward_mint,
+            name,
+        });
+        
+        Ok(())
 
     }
 }

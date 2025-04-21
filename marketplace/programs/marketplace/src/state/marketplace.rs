@@ -8,7 +8,7 @@ pub struct Marketplace {
     pub bump: u8,
     pub treasury_bump: u8,
     pub reward_bump: u8,
-    pub name: String 
+    pub name: String //datatype vector/sting themselves need 4 bytes + user can define how much len is want.
 }
 
 impl Space for Marketplace {

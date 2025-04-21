@@ -19,6 +19,6 @@ idl-build = ["anchor-lang/idl-build"]
 [dependencies]
 anchor-lang = {version ="0.31.0", features = ["init-if-needed"]}
 anchor-spl = "0.31.0"
-getrandom = { version = "0.3.2", features = ["custom"] }
+getrandom  = "0.3.2"
 solana-program = "2.2.1"
 constant-product-curve = { git = "https://github.com/deanmlittle/constant-product-curve.git" }
