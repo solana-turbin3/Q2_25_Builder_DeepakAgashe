@@ -1,3 +1,6 @@
 [submodule "amm"]
 	path = amm
 	url = https://github.com/deepakA18/amm
+[submodule "Joule-Capstone-Project"]
+	path = Joule-Capstone-Project
+	url = https://github.com/deepakA18/Joule-Capstone-Project
