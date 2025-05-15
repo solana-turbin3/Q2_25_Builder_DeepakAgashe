@@ -10,3 +10,6 @@
 [submodule "Escrow"]
 	path = Escrow
 	url = https://github.com/deepakA18/Escrow.git
+[submodule "Solana-Starter"]
+	path = Solana-Starter
+	url = https://github.com/deepakA18/Solana-Starter.git
