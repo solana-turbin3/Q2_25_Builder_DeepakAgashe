@@ -1,0 +1,3 @@
+[submodule "amm"]
+	path = amm
+	url = https://github.com/deepakA18/amm
