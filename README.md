@@ -64,7 +64,7 @@ This submodule implements an Automated Market Maker (AMM) on Solana! It demonstr
 - Fee calculation and distribution
 
 ## Joule-Capstone-Project @ 33061c8
-This submodule is the grand finale! 🎓 It puts everything together and shows how I can build a specialized lending protocol on Solana! It proves I can:
+This submodule is the grand finale! It puts everything together and shows how I can build a specialized lending protocol on Solana! It proves I can:
 
 - Create a lending protocol optimized for redeemable assets like staked SOL derivatives (jitoSOL)
 - Implement capital-efficient borrowing with LTVs up to 70% while maintaining safety
