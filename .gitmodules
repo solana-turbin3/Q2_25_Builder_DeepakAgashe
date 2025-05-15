@@ -16,3 +16,6 @@
 [submodule "Marketplace"]
 	path = Marketplace
 	url = https://github.com/deepakA18/Marketplace.git
+[submodule "NFT-Staking"]
+	path = NFT-Staking
+	url = https://github.com/deepakA18/NFT-Staking.git
