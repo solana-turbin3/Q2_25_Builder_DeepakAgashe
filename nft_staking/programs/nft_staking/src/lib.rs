@@ -1,3 +1,5 @@
+#![allow(unexpected_cfgs)]
+
 pub mod constants;
 pub mod error;
 pub mod instructions;
@@ -16,6 +18,6 @@ pub mod nft_staking {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        initialize_config::handler(ctx)
+        todo!();
     }
 }
