@@ -13,7 +13,7 @@ pub use state::*;
 
 
 
-declare_id!("HXKzx8Rq9p8SK8WiqTqaDj6sS1XevcHf2QzGExpfDLgM");
+declare_id!("9Wvj6zZ7f4LegpRaWRFXjFFBU8tBT6hwD5S47D366Ww7");
 
 #[program]
 pub mod capstone {

@@ -3,7 +3,7 @@ use anchor_lang::prelude::*;
 use crate::state::{Market, UserPosition};
 
 #[derive(Accounts)]
-pub struct Position<'info>{
+pub struct Position<'info> {
     #[account(mut)]
     pub owner: Signer<'info>,
 
@@ -24,12 +24,11 @@ pub struct Position<'info>{
     pub user_position: Account<'info, UserPosition>,
 
     pub system_program: Program<'info, System>,
-    pub rent: Sysvar<'info, Rent> 
+    pub rent: Sysvar<'info, Rent>,
 }
 
-impl<'info> Position<'info>{
+impl<'info> Position<'info> {
     pub fn create_position(&mut self, bumps: &PositionBumps) -> Result<()> {
-        
         let user_position = &mut self.user_position;
         let current_time = Clock::get()?.unix_timestamp;
 
@@ -40,7 +39,7 @@ impl<'info> Position<'info>{
         user_position.borrowed_shares = 0;
         user_position.last_update_timestamp = current_time;
         user_position.bump = bumps.user_position;
-        
+
         Ok(())
     }
 }

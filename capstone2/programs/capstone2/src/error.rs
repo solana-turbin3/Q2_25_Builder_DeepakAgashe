@@ -11,15 +11,6 @@ pub enum ErrorCode {
     #[msg("Insufficient liquidity")]
     InsufficientLiquidity,
     
-    #[msg("Position is being unstaked")]
-    PositionBeingUnstaked,
-    
-    #[msg("Position is not being unstaked")]
-    NotBeingUnstaked,
-    
-    #[msg("Unstaking period not complete")]
-    UnstakingNotComplete,
-    
     #[msg("Invalid amount")]
     InvalidAmount,
     
@@ -29,6 +20,5 @@ pub enum ErrorCode {
     #[msg("Unauthorized")]
     Unauthorized,
 
-    #[msg("Invalid Oracle Data!")]
-    InvalidOracleData
+
 }

@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-capstone2 = "HXKzx8Rq9p8SK8WiqTqaDj6sS1XevcHf2QzGExpfDLgM"
+capstone2 = "9Wvj6zZ7f4LegpRaWRFXjFFBU8tBT6hwD5S47D366Ww7"
 
 [registry]
 url = "https://api.apr.dev"

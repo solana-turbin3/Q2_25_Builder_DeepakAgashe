@@ -50,18 +50,14 @@ impl<'info> Repay<'info>{
         let user_position = &mut self.user_position;
         let current_time = Clock::get()?.unix_timestamp;
 
-        // For Phase 1, simple fixed interest accrual
-        // Calculate time elapsed since last accrual
+       
         let time_elapsed = current_time.checked_sub(market.last_accrual_timestamp)
             .ok_or(ErrorCode::MathOverflow)?;
         
         if time_elapsed > 0 {
-            // Apply simple interest to total borrows
-            // Formula: interest = principal * rate * time
-            // Where rate is per second (fixed_borrow_rate / 10000 / 365 / 86400)
+           
             if market.total_borrows > 0 {
-                // Convert basis points to decimal, then to per-second rate
-                // 10000 basis points = 100%, 365 days, 86400 seconds per day
+                
                 let interest_factor = (market.fixed_borrow_rate as u128)
                     .checked_mul(time_elapsed as u128)
                     .ok_or(ErrorCode::MathOverflow)?
@@ -79,11 +75,10 @@ impl<'info> Repay<'info>{
                 }
             }
             
-            // Update last accrual timestamp
+            
             market.last_accrual_timestamp = current_time;
         }
 
-        // Calculate user's current borrow amount based on shares
         let user_borrow_amount = if market.total_borrow_shares == 0 {
             0
         } else {
@@ -94,10 +89,10 @@ impl<'info> Repay<'info>{
                 .ok_or(ErrorCode::MathOverflow)?
         };
 
-        // Limit repay amount to what user actually owes
+        
         let repay_amount = amount.min(user_borrow_amount);
 
-        // Calculate shares to burn based on proportion of debt being repaid
+        
         let shares_to_burn = if user_borrow_amount == 0 {
             0
         } else {
@@ -108,7 +103,7 @@ impl<'info> Repay<'info>{
                 .ok_or(ErrorCode::MathOverflow)?
         };
 
-        // Transfer tokens from user to borrow vault
+        
         let cpi_ctx = CpiContext::new(
             self.token_program.to_account_info(),
             Transfer{
@@ -120,7 +115,7 @@ impl<'info> Repay<'info>{
 
         transfer(cpi_ctx, repay_amount)?;
 
-        // Update user position
+       
         user_position.borrowed_sol = user_position.borrowed_sol
             .checked_sub(repay_amount)
             .ok_or(ErrorCode::MathOverflow)?;
@@ -129,7 +124,7 @@ impl<'info> Repay<'info>{
             .checked_sub(shares_to_burn)
             .ok_or(ErrorCode::MathOverflow)?;
         
-        // Update market state
+       
         market.total_borrows = market.total_borrows
             .checked_sub(repay_amount)
             .ok_or(ErrorCode::MathOverflow)?;
@@ -138,10 +133,10 @@ impl<'info> Repay<'info>{
             .checked_sub(shares_to_burn)
             .ok_or(ErrorCode::MathOverflow)?;
         
-        // Update timestamp
+       
         user_position.last_update_timestamp = current_time;
         
-        // Emit repay event
+       
         emit!(RepayEvent {
             user: self.owner.key(),
             amount: repay_amount,
@@ -149,7 +144,6 @@ impl<'info> Repay<'info>{
             timestamp: current_time,
         });
         
-        msg!("Repaid {} SOL by burning {} shares", repay_amount, shares_to_burn);
         Ok(())
     }
 }
