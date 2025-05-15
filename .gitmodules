@@ -13,3 +13,6 @@
 [submodule "Solana-Starter"]
 	path = Solana-Starter
 	url = https://github.com/deepakA18/Solana-Starter.git
+[submodule "Marketplace"]
+	path = Marketplace
+	url = https://github.com/deepakA18/Marketplace.git
